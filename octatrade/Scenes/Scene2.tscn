@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cj3qb6dy5xwpe"]
+
+[node name="Scene2" type="Node2D"]
+
+[node name="gui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 119.0
+offset_right = 90.0
+offset_bottom = 159.0
+
+[node name="game" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 91.0
+offset_bottom = 118.0
