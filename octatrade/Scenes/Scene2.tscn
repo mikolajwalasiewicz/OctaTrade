@@ -1,19 +1,24 @@
-[gd_scene format=3 uid="uid://cj3qb6dy5xwpe"]
+[gd_scene load_steps=3 format=3 uid="uid://cj3qb6dy5xwpe"]
+
+[ext_resource type="Script" path="res://Scripts/scene_2.gd" id="1_cotev"]
+[ext_resource type="PackedScene" uid="uid://d01j4ajs3iyn" path="res://Scenes/Dice.tscn" id="2_nxgef"]
 
 [node name="Scene2" type="Node2D"]
+script = ExtResource("1_cotev")
 
 [node name="gui" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -1.0
-offset_top = 119.0
+offset_top = 120.0
 offset_right = 90.0
-offset_bottom = 159.0
+offset_bottom = 160.0
 
 [node name="game" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1.0
-offset_top = -1.0
-offset_right = 91.0
-offset_bottom = 118.0
+offset_right = 89.0
+offset_bottom = 127.0
+
+[node name="Dice" parent="." instance=ExtResource("2_nxgef")]
