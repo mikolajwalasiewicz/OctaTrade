@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://c1ycknutgyyaf"]
+
+[node name="Materials" type="Node2D"]
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+offset_left = 1.0
+offset_top = 144.0
+offset_right = 41.0
+offset_bottom = 160.0
+
+[node name="Label" type="Label" parent="VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+text = "0
+"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="."]
+offset_left = 1.0
+offset_top = 127.0
+offset_right = 41.0
+offset_bottom = 143.0
+
+[node name="Label" type="Label" parent="VBoxContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+text = "0
+"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="."]
+offset_left = 46.0
+offset_top = 143.0
+offset_right = 86.0
+offset_bottom = 159.0
+
+[node name="Label" type="Label" parent="VBoxContainer5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+text = "0
+"
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="."]
+offset_left = 46.0
+offset_top = 126.0
+offset_right = 86.0
+offset_bottom = 142.0
+
+[node name="Label" type="Label" parent="VBoxContainer6"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+text = "0
+"

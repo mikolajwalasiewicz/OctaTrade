@@ -146,7 +146,7 @@ animations = [{
 script = ExtResource("1_go6l7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(45, 26)
+position = Vector2(44, 11)
 scale = Vector2(1.875, 1.75)
 sprite_frames = SubResource("SpriteFrames_qu7qt")
 animation = &"roll"
@@ -157,10 +157,10 @@ animation = &"roll"
 position = Vector2(44, 33)
 
 [node name="Button" type="Button" parent="."]
-offset_left = 27.0
-offset_top = 43.0
-offset_right = 64.0
-offset_bottom = 65.0
+offset_left = 26.0
+offset_top = 28.0
+offset_right = 63.0
+offset_bottom = 50.0
 theme_override_font_sizes/font_size = 10
 text = "Roll"
 

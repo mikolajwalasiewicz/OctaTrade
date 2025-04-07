@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj3qb6dy5xwpe"]
+[gd_scene load_steps=6 format=3 uid="uid://cj3qb6dy5xwpe"]
 
 [ext_resource type="Script" path="res://Scripts/scene_2.gd" id="1_cotev"]
 [ext_resource type="PackedScene" uid="uid://d01j4ajs3iyn" path="res://Scenes/Dice.tscn" id="2_nxgef"]
+[ext_resource type="PackedScene" uid="uid://dnqc6wqin3ncj" path="res://Scenes/gui.tscn" id="3_13ow4"]
+[ext_resource type="PackedScene" uid="uid://c1ycknutgyyaf" path="res://Scenes/materials.tscn" id="4_ex0e7"]
+[ext_resource type="PackedScene" uid="uid://c4bn1qwvsfew8" path="res://Scenes/board.tscn" id="5_6astt"]
 
 [node name="Scene2" type="Node2D"]
 script = ExtResource("1_cotev")
@@ -21,4 +24,12 @@ offset_left = 1.0
 offset_right = 89.0
 offset_bottom = 127.0
 
+[node name="Gui" parent="." instance=ExtResource("3_13ow4")]
+
+[node name="Materials" parent="." instance=ExtResource("4_ex0e7")]
+position = Vector2(4, -12)
+
+[node name="Board" parent="." instance=ExtResource("5_6astt")]
+
 [node name="Dice" parent="." instance=ExtResource("2_nxgef")]
+position = Vector2(1, 47)

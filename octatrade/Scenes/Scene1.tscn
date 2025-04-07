@@ -23,7 +23,7 @@ offset_left = 39.0
 offset_top = 72.0
 offset_right = 51.0
 offset_bottom = 95.0
-text = "5
+text = "2
 "
 
 [node name="Button2" type="Button" parent="."]

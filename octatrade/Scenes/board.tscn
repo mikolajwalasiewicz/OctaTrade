@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=4 uid="uid://c4bn1qwvsfew8"]
+
+[ext_resource type="Script" path="res://board.gd" id="1_8i4ih"]
+[ext_resource type="Texture2D" uid="uid://c0khiajgirenx" path="res://Textures/board/map.png" id="2_g7xwq"]
+[ext_resource type="PackedScene" uid="uid://ceob2missk8on" path="res://Scenes/cell.tscn" id="3_2ato4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l2p7y"]
+texture = ExtResource("2_g7xwq")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_tpm5u"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(32, 32)
+sources/11 = SubResource("TileSetAtlasSource_l2p7y")
+
+[node name="Board" type="Node2D"]
+script = ExtResource("1_8i4ih")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray("AAAAAAIACwAAAAAAAAACAAMACwAAAAEAAAABAAMACwABAAEAAAAAAAMACwAAAAEAAAABAAIACwABAAEAAAABAAEACwAAAAAAAAACAAIACwAAAAEAAAADAAEACwABAAEAAAADAAIACwABAAAAAAAEAAEACwAAAAAAAAAEAAIACwAAAAAAAAADAAMACwABAAAAAAAEAAMACwABAAEAAAACAAQACwAAAAEAAAAEAAQACwABAAEAAAADAAQACwAAAAAAAAAFAAMACwABAAAAAAAFAAIACwAAAAEAAAAFAAEACwAAAAEAAAAGAAIACwAAAAEAAAAGAAMACwABAAEAAAAGAAQACwABAAEAAAAIAAMACAABAAEAAAAJAAIACAABAAEAAAAKAAMACAABAAEAAAAJAAQACAABAAEAAAAIAAQACAABAAEAAAAFAAQACwABAAAAAAABAAQACwAAAAAAAAAAAAQACwAAAAAAAAAEAAUACwAAAAAAAAACAAUACwAAAAEAAAAIAAIACAABAAEAAAACAAEACwAAAAAAAAAGAAEACwAAAAAAAAAAAAUACwAAAAAAAAAAAAEACwAAAAEAAAAGAAUACwAAAAAAAAA=")
+tile_set = SubResource("TileSet_tpm5u")
+
+[node name="cells" type="Node2D" parent="."]
+visible = false
+y_sort_enabled = true
+position = Vector2(0, 22)
+
+[node name="Cell" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(-1, 25)
+
+[node name="Cell2" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(16, 34)
+
+[node name="Cell3" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(-1, 43)
+
+[node name="Cell4" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(16, 51)
+
+[node name="Cell5" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(33, 60)
+
+[node name="Cell6" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(33, 43)
+
+[node name="Cell7" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(-1, 60)
+
+[node name="Cell8" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(16, 69)
+
+[node name="Cell9" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(-1, 78)
+
+[node name="Cell10" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(16, 86)
+
+[node name="Cell11" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(33, 25)
+
+[node name="Cell12" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(33, 78)
+
+[node name="Cell13" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(50, 34)
+
+[node name="Cell14" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(67, 25)
+
+[node name="Cell15" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(50, 34)
+
+[node name="Cell16" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(67, 42)
+
+[node name="Cell19" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(50, 51)
+
+[node name="Cell20" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(67, 60)
+
+[node name="Cell21" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(50, 69)
+
+[node name="Cell22" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(67, 77)
+
+[node name="Cell23" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(51, 86)
+
+[node name="Cell17" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(16, 16)
+
+[node name="Cell24" parent="cells" instance=ExtResource("3_2ato4")]
+position = Vector2(50, 17)

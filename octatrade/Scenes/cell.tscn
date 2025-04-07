@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceob2missk8on"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sdyl3"]
+load_path = "res://.godot/imported/fantasyhextiles_v3.png-78441ffdfe602dd75d8b9fc1dcaaf3b2.ctex"
+
+[node name="Cell" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(12, -16)
+scale = Vector2(0.75, 0.666667)
+texture = SubResource("CompressedTexture2D_sdyl3")
+hframes = 8
+vframes = 6
