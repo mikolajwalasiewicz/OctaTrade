@@ -1,3 +1,4 @@
+#scene_1
 extends Node2D
 
 var value : int = 2
