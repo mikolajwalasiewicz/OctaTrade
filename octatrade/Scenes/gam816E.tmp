@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjmxoujxo4n72"]
+
+[ext_resource type="PackedScene" uid="uid://dnqc6wqin3ncj" path="res://Scenes/gui.tscn" id="1_yl25n"]
+[ext_resource type="PackedScene" uid="uid://c1ycknutgyyaf" path="res://Scenes/materials.tscn" id="2_df68q"]
+[ext_resource type="PackedScene" uid="uid://c4bn1qwvsfew8" path="res://Scenes/board.tscn" id="3_brhjt"]
+[ext_resource type="PackedScene" uid="uid://d01j4ajs3iyn" path="res://Scenes/Dice.tscn" id="4_yhlu8"]
+
+[node name="Game" type="Node2D"]
+
+[node name="gui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 120.0
+offset_right = 90.0
+offset_bottom = 160.0
+
+[node name="game" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_right = 89.0
+offset_bottom = 127.0
+
+[node name="Gui" parent="." instance=ExtResource("1_yl25n")]
+
+[node name="Materials" parent="." instance=ExtResource("2_df68q")]
+position = Vector2(4, -12)
+
+[node name="Board" parent="." instance=ExtResource("3_brhjt")]
+
+[node name="Dice" parent="." instance=ExtResource("4_yhlu8")]
+position = Vector2(1, 47)

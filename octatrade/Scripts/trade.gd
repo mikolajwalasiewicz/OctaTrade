@@ -1,4 +1,5 @@
-extends Node2D
+extends Button
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,10 +11,5 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_button_4_pressed() -> void:
-	#reset
-	get_parent().set_resume()
-
-
-func _on_button_3_pressed() -> void:
-	get_parent().set_game()
+func _on_pressed() -> void:
+	get_parent().get_parent().set_players()

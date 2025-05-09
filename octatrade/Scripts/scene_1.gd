@@ -1,9 +1,10 @@
 extends Node2D
 
 var value : int = 2
-
+#var menu_scene = preload("res://Scenes/Scene2.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+		# Dodajemy scenę Menu jako dziecko World
 	pass
 
 
@@ -27,4 +28,4 @@ func _on_button_2_pressed() -> void:
 
 
 func _on_button_3_pressed_start() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Scene2.tscn")
+	get_parent().set_players()
