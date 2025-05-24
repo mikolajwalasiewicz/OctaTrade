@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d01j4ajs3iyn" path="res://Scenes/Dice.tscn" id="4_yhlu8"]
 
 [node name="Game" type="Node2D"]
+position = Vector2(0, -1)
 script = ExtResource("1_nspfj")
 
 [node name="gui" type="Control" parent="."]
@@ -16,28 +17,33 @@ offset_left = -1.0
 offset_top = 120.0
 offset_right = 90.0
 offset_bottom = 160.0
+metadata/_edit_use_anchors_ = true
 
 [node name="game" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1.0
+offset_top = 2.0
 offset_right = 89.0
-offset_bottom = 127.0
+offset_bottom = 129.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Gui" parent="." instance=ExtResource("1_yl25n")]
 
 [node name="Materials" parent="." instance=ExtResource("2_df68q")]
-position = Vector2(4, -12)
+position = Vector2(9, 2)
 
 [node name="Board" parent="." instance=ExtResource("3_brhjt")]
+position = Vector2(0, 2)
 
 [node name="Dice" parent="." instance=ExtResource("4_yhlu8")]
-position = Vector2(1, 47)
+position = Vector2(13, 55)
 
 [node name="Button" type="Button" parent="."]
 offset_right = 16.0
 offset_bottom = 16.0
 theme_override_font_sizes/font_size = 5
 text = "esc"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
