@@ -1,4 +1,4 @@
 extends Node
 
 var board_data = []
-var settlement_spots = []
+var settlement_spots= []

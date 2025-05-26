@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://c4bn1qwvsfew8"]
+[gd_scene load_steps=40 format=4 uid="uid://c4bn1qwvsfew8"]
 
 [ext_resource type="Script" path="res://board.gd" id="1_8i4ih"]
 [ext_resource type="Texture2D" uid="uid://c0khiajgirenx" path="res://Textures/board/map.png" id="2_g7xwq"]
@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://b0q822o8qkuvm" path="res://Textures/numbers/10.png" id="12_q4v72"]
 [ext_resource type="Texture2D" uid="uid://d4khrp2u1ba35" path="res://Textures/numbers/11.png" id="13_ksfc1"]
 [ext_resource type="Texture2D" uid="uid://r77u3cp311op" path="res://Textures/numbers/12.png" id="14_d3g7l"]
-[ext_resource type="Texture2D" uid="uid://ck8lh8b1dgbna" path="res://Textures/village/place.png" id="19_y1q8f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g8351"]
 texture = ExtResource("2_g7xwq")
@@ -174,12 +173,6 @@ texture_region_size = Vector2i(32, 32)
 2:1/0 = 0
 3:1/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vtd3a"]
-texture = ExtResource("19_y1q8f")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-
 [sub_resource type="TileSet" id="TileSet_qfj8t"]
 tile_shape = 3
 tile_offset_axis = 1
@@ -189,7 +182,6 @@ sources/1 = SubResource("TileSetAtlasSource_eodq4")
 sources/2 = SubResource("TileSetAtlasSource_6b3ki")
 sources/3 = SubResource("TileSetAtlasSource_jssxh")
 sources/4 = SubResource("TileSetAtlasSource_tk4gr")
-sources/5 = SubResource("TileSetAtlasSource_vtd3a")
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_8i4ih")
@@ -200,17 +192,9 @@ tile_map_data = PackedByteArray("AAAAAAIAAQAAAAAAAAACAAMAAQAAAAAAAAABAAMAAQAAAAA
 tile_set = SubResource("TileSet_tpm5u")
 
 [node name="Tile Number" type="TileMapLayer" parent="."]
-position = Vector2(1, 0)
 scale = Vector2(0.5, 0.5)
 tile_map_data = PackedByteArray("AAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAADAAIAAQAAAAAAAAADAAMAAQAAAAAAAAACAAMAAQAAAAAAAAAFAAMAAQAAAAAAAAAGAAEAAQAAAAAAAAAAAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAACAAUAAQAAAAAAAAAEAAIAAQAAAAAAAAAGAAUAAQAAAAAAAAAGAAQAAQAAAAAAAAAGAAMAAQAAAAAAAAABAAEAAQAAAAAAAAADAAEAAQAAAAAAAAAAAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAABAAIAAQAAAAAAAAAAAAUAAQAAAAAAAAAGAAIAAQAAAAAAAAAEAAEAAQAAAAAAAAACAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAUAAQAAAAAAAAAFAAEAAQAAAAAAAAACAAEAAQAAAAAAAAACAAIAAQAAAAAAAAAFAAIAAQAAAAAAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_hgaa8")
-
-[node name="Tile Castle2" type="TileMapLayer" parent="."]
-texture_filter = 1
-position = Vector2(-8, 0)
-scale = Vector2(0.5, 0.5)
-tile_map_data = PackedByteArray("AAABAAEABQAAAAAAAAABAAIABQAAAAAAAAABAAMABQAAAAAAAAABAAQABQAAAAAAAAACAAQABQAAAAAAAAACAAMABQAAAAAAAAACAAIABQAAAAAAAAACAAEABQAAAAAAAAADAAEABQAAAAAAAAADAAIABQAAAAAAAAADAAMABQAAAAAAAAADAAQABQAAAAAAAAACAAUABQAAAAAAAAAEAAUABQAAAAAAAAAEAAQABQAAAAAAAAAFAAQABQAAAAAAAAAGAAUABQAAAAAAAAAGAAQABQAAAAAAAAAGAAMABQAAAAAAAAAFAAMABQAAAAAAAAAFAAIABQAAAAAAAAAGAAIABQAAAAAAAAAFAAEABQAAAAAAAAAEAAIABQAAAAAAAAAEAAMABQAAAAAAAAAEAAEABQAAAAAAAAAGAAEABQAAAAAAAAA=")
-tile_set = SubResource("TileSet_qfj8t")
 
 [node name="Tile Castle" type="TileMapLayer" parent="."]
 texture_filter = 1

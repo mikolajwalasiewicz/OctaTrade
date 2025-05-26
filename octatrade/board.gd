@@ -25,9 +25,14 @@ func _ready() -> void:
 #		for j in 11:
 #			place_settlement(Vector2i(i, j), 1)
 			
-	place_settlement(Vector2i(1, 1), 1)
+	#place_settlement(Vector2i(1, 1), 1)
+	#place_settlement(Vector2i(1, 2), 1)
+	#place_settlement(Vector2i(2, 1), 1)
 
-	fill_table_with_spots_to_place_settlements()
+	
+	can_place_settlement(Vector2i(1, 1))
+	can_place_settlement(Vector2i(2, 1))
+	can_place_settlement(Vector2i(1, 2))
 
 func generate_board():
 	var width = 7
@@ -118,8 +123,8 @@ func fill_table_with_spots_to_place_settlements():
 			if bd.has("pos") and bd["pos"] in neighbor_positions:
 				connected_tiles.append({
 					"pos": bd["pos"],
-					"color_id": bd.get("color", -1),
-					"number_id": bd.get("number", -1)
+					"color_id": bd.get("color_id", -1),
+					"number_id": bd.get("number_id", -1)
 				})
 				
 		# Ustaw zasoby jeśli są 3
@@ -130,7 +135,7 @@ func fill_table_with_spots_to_place_settlements():
 			print("Zaktualizowano spot na", spot["pos"], "->", spot["resource1"], spot["resource2"], spot["resource3"])
 		else:
 			print("❗Nie znaleziono 3 pól dla spot:", spot_pos, "-> znaleziono:", connected_tiles.size())
-#	print("Zaktualizowano spot na", pos, "->", spot["resource1"], spot["resource2"], spot["resource3"])
+
 func place_settlement(cell: Vector2i, player_number: int):
 	for tile in variables.board_data:
 		if cell.x == 0:
@@ -157,6 +162,7 @@ func place_settlement(cell: Vector2i, player_number: int):
 			})
 			
 			print("Dodano nową osadę gracza", player_number, "na pozycji", cell)
+			fill_table_with_spots_to_place_settlements()
 			break
 
 func place_castle(cell: Vector2i, player_number: int):
@@ -166,3 +172,32 @@ func place_castle(cell: Vector2i, player_number: int):
 		
 		if tile["pos"] == cell:
 			tilemap_settlements.set_cell(cell, player_number-1, Vector2i(1,0))
+
+func can_place_settlement(pos: Vector2i) -> bool:
+	print("Sprawdzam pozycję:", pos)
+	for spot in variables.settlement_spots:
+		print("Spot:", spot["pos"], "occupied:", spot.get("occupied", null))
+		if spot["pos"] == pos:
+			if spot.get("occupied", false):
+				print("false (occupied == true)")
+				return false
+			else:
+				print("true (occupied == false lub brak)")
+				return true
+	print("true (nie znaleziono spot )")
+	return true
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		var click_pos = event.position
+		# Zamiana na pozycję na TileMapie (map coordinates)
+		var cell_pos = tilemap_settlements.local_to_map(tilemap_settlements.to_local(click_pos))
+		print("✅ Kliknięto LPM na pozycji (map coords):", cell_pos)
+		
+		# Sprawdź, czy można postawić osadę na klikniętej kratce
+		if can_place_settlement(cell_pos):
+			print("✅ Pole wolne, stawiam osadę")
+			place_settlement(cell_pos, 1)  # załóżmy gracz 1
+		else:
+			print("❌ Nie można postawić osady na tej pozycji")
+			
