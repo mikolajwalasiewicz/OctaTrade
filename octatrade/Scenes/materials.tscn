@@ -1,99 +1,188 @@
-[gd_scene format=3 uid="uid://c1ycknutgyyaf"]
+[gd_scene load_steps=17 format=4 uid="uid://c1ycknutgyyaf"]
+
+[ext_resource type="Texture2D" uid="uid://c0khiajgirenx" path="res://Textures/board/map.png" id="1_8mxv8"]
+[ext_resource type="Texture2D" uid="uid://c2j8o8xvug15a" path="res://Textures/village/player1.png" id="2_hbui1"]
+[ext_resource type="Texture2D" uid="uid://ckcxgcar1inl1" path="res://Textures/village/player2.png" id="3_2hb4n"]
+[ext_resource type="Texture2D" uid="uid://s74hqba8uv2h" path="res://Textures/village/player3.png" id="4_oo57e"]
+[ext_resource type="Texture2D" uid="uid://bt5025oe3m30w" path="res://Textures/village/player4.png" id="5_4rq6k"]
+[ext_resource type="Texture2D" uid="uid://10vaecdshows" path="res://Textures/village/player5.png" id="6_sx34k"]
+[ext_resource type="Texture2D" uid="uid://ck8lh8b1dgbna" path="res://Textures/village/place.png" id="7_4wj5f"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6kbsj"]
+texture = ExtResource("1_8mxv8")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 4
+0:0/0 = 0
+0:0/1 = 1
+1:0/next_alternative_id = 2
+1:0/0 = 0
+1:0/3 = 3
+0:1/next_alternative_id = 3
+0:1/0 = 0
+0:1/2 = 2
+1:1/next_alternative_id = 2
+1:1/0 = 0
+1:1/4 = 4
+
+[sub_resource type="TileSet" id="TileSet_33avh"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_6kbsj")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2c6op"]
+texture = ExtResource("2_hbui1")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u21nf"]
+texture = ExtResource("3_2hb4n")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_im2dc"]
+texture = ExtResource("4_oo57e")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5te8b"]
+texture = ExtResource("5_4rq6k")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g2srr"]
+texture = ExtResource("6_sx34k")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gpwx3"]
+texture = ExtResource("7_4wj5f")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jpfld"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_2c6op")
+sources/1 = SubResource("TileSetAtlasSource_u21nf")
+sources/2 = SubResource("TileSetAtlasSource_im2dc")
+sources/3 = SubResource("TileSetAtlasSource_5te8b")
+sources/4 = SubResource("TileSetAtlasSource_g2srr")
+sources/5 = SubResource("TileSetAtlasSource_gpwx3")
 
 [node name="Materials" type="Node2D"]
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="."]
-offset_left = 8.0
-offset_top = 133.0
-offset_right = 11.0
-offset_bottom = 141.0
+[node name="Tile Color" type="TileMapLayer" parent="."]
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AAAIAAMACAABAAEAAAAJAAIACAABAAEAAAAKAAMACAABAAEAAAAJAAQACAABAAEAAAAIAAQACAABAAEAAAAIAAIACAABAAEAAAD//xAAAQABAAEAAAD//w8AAQAAAAEAAAD//w4AAQABAAAAAAD//w0AAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_33avh")
 
-[node name="Label" type="Label" parent="VBoxContainer3"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
+[node name="Label" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 107.0
+offset_right = 7.0
+offset_bottom = 118.0
+theme_override_font_sizes/font_size = 7
 text = "0
 "
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="."]
-offset_left = 8.0
-offset_top = 116.0
-offset_right = 11.0
-offset_bottom = 124.0
-
-[node name="Label" type="Label" parent="VBoxContainer4"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer5" type="VBoxContainer" parent="."]
-offset_left = 18.0
-offset_top = 133.0
-offset_right = 21.0
-offset_bottom = 141.0
-
-[node name="Label" type="Label" parent="VBoxContainer5"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer6" type="VBoxContainer" parent="."]
-offset_left = 18.0
-offset_top = 116.0
-offset_right = 21.0
-offset_bottom = 124.0
-
-[node name="Label" type="Label" parent="VBoxContainer6"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer7" type="VBoxContainer" parent="."]
-offset_left = 46.0
-offset_top = 132.0
-offset_right = 49.0
-offset_bottom = 140.0
-
-[node name="Label" type="Label" parent="VBoxContainer7"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer8" type="VBoxContainer" parent="."]
-offset_left = 46.0
+[node name="Label2" type="Label" parent="."]
+offset_left = 3.0
 offset_top = 115.0
-offset_right = 49.0
-offset_bottom = 123.0
-
-[node name="Label" type="Label" parent="VBoxContainer8"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
+offset_right = 7.0
+offset_bottom = 126.0
+theme_override_font_sizes/font_size = 7
 text = "0
 "
 
-[node name="VBoxContainer9" type="VBoxContainer" parent="."]
-offset_left = 56.0
-offset_top = 132.0
-offset_right = 59.0
-offset_bottom = 140.0
-
-[node name="Label" type="Label" parent="VBoxContainer9"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
+[node name="Label3" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 123.0
+offset_right = 7.0
+offset_bottom = 134.0
+theme_override_font_sizes/font_size = 7
 text = "0
 "
 
-[node name="VBoxContainer10" type="VBoxContainer" parent="."]
-offset_left = 56.0
-offset_top = 115.0
-offset_right = 59.0
-offset_bottom = 123.0
-
-[node name="Label" type="Label" parent="VBoxContainer10"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
+[node name="Label4" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 131.0
+offset_right = 7.0
+offset_bottom = 142.0
+theme_override_font_sizes/font_size = 7
 text = "0
 "
+
+[node name="Tile Castle" type="TileMapLayer" parent="."]
+texture_filter = 1
+position = Vector2(36, 132)
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray("AAABAP//AgABAAAAAAD/////AgAAAAAAAAA=")
+tile_set = SubResource("TileSet_jpfld")
+
+[node name="Label4" type="Label" parent="Tile Castle"]
+offset_left = 2.0
+offset_top = -8.0
+offset_right = 6.0
+offset_bottom = 3.0
+theme_override_font_sizes/font_size = 10
+text = "0
+"
+
+[node name="Label5" type="Label" parent="Tile Castle"]
+offset_left = 52.0
+offset_top = -8.0
+offset_right = 56.0
+offset_bottom = 3.0
+theme_override_font_sizes/font_size = 10
+text = "0
+"
+
+[node name="Button" type="Button" parent="Tile Castle"]
+offset_left = -12.0
+offset_top = -6.0
+offset_right = -4.0
+offset_bottom = 2.0
+
+[node name="Button2" type="Button" parent="Tile Castle"]
+offset_left = 32.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 6.0

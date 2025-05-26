@@ -166,12 +166,25 @@ func place_settlement(cell: Vector2i, player_number: int):
 			break
 
 func place_castle(cell: Vector2i, player_number: int):
-	for tile in variables.board_data:
-		if cell.x == 0:
-			continue
-		
-		if tile["pos"] == cell:
-			tilemap_settlements.set_cell(cell, player_number-1, Vector2i(1,0))
+	for spot in variables.settlement_spots:
+		if spot["pos"] == cell:
+			if spot.get("occupied", false) and spot.get("owner", -1) == player_number:
+				if spot.get("can_upgrade", true):
+					# Zmieniamy grafikę na zamek
+					tilemap_settlements.set_cell(cell, player_number - 1, Vector2i(1, 0))
+					
+					# Aktualizujemy dane w spocie
+					spot["can_upgrade"] = false
+					
+					print("🏰 Osada gracza", player_number, "na", cell, "została ulepszona do zamku")
+					return
+				else:
+					print("❌ Osada na", cell, "nie może zostać ulepszona (can_upgrade = false)")
+					return
+			else:
+				print("❌ To pole nie należy do gracza", player_number, "lub nie ma osady")
+				return
+	print("❌ Brak osady na tej pozycji:", cell)
 
 func can_place_settlement(pos: Vector2i) -> bool:
 	print("Sprawdzam pozycję:", pos)
@@ -198,6 +211,7 @@ func _input(event: InputEvent) -> void:
 		if can_place_settlement(cell_pos):
 			print("✅ Pole wolne, stawiam osadę")
 			place_settlement(cell_pos, 1)  # załóżmy gracz 1
+#			place_castle(cell_pos, 1)  # załóżmy gracz 1
 		else:
 			print("❌ Nie można postawić osady na tej pozycji")
 			

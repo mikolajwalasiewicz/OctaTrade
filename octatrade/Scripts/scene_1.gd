@@ -1,9 +1,10 @@
 #scene_1
 extends Node2D
 
+@onready var variables = preload("res://variable.gd").new()
+
 var value : int = 2
-#var menu_scene = preload("res://Scenes/Scene2.tscn")
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 		# Dodajemy scenę Menu jako dziecko World
 	pass
@@ -27,6 +28,10 @@ func _on_button_2_pressed() -> void:
 		value -= 1
 	$Label2.text = str(value)
 
+func set_player_count():
+	variables.player_count = value
 
 func _on_button_3_pressed_start() -> void:
+	set_player_count()
+	print("liczba Graczy: ", variables.player_count)
 	get_parent().set_players()

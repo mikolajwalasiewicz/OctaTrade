@@ -1,7 +1,89 @@
-[gd_scene load_steps=3 format=3 uid="uid://dodqhv7odif6o"]
+[gd_scene load_steps=15 format=3 uid="uid://dodqhv7odif6o"]
 
 [ext_resource type="Script" path="res://shop.gd" id="1_uhwo8"]
-[ext_resource type="PackedScene" uid="uid://c1ycknutgyyaf" path="res://Scenes/materials.tscn" id="3_kcney"]
+[ext_resource type="Texture2D" uid="uid://c2j8o8xvug15a" path="res://Textures/village/player1.png" id="2_8i2qb"]
+[ext_resource type="Texture2D" uid="uid://ckcxgcar1inl1" path="res://Textures/village/player2.png" id="3_7kpkw"]
+[ext_resource type="Texture2D" uid="uid://s74hqba8uv2h" path="res://Textures/village/player3.png" id="4_vyrwh"]
+[ext_resource type="Texture2D" uid="uid://bt5025oe3m30w" path="res://Textures/village/player4.png" id="5_3q4eo"]
+[ext_resource type="Texture2D" uid="uid://10vaecdshows" path="res://Textures/village/player5.png" id="6_qita1"]
+[ext_resource type="Texture2D" uid="uid://ck8lh8b1dgbna" path="res://Textures/village/place.png" id="7_vqyv0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vd7tu"]
+texture = ExtResource("2_8i2qb")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ojau0"]
+texture = ExtResource("3_7kpkw")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y3cw6"]
+texture = ExtResource("4_vyrwh")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m4n2g"]
+texture = ExtResource("5_3q4eo")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6k3q6"]
+texture = ExtResource("6_qita1")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j4xcn"]
+texture = ExtResource("7_vqyv0")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_87ouy"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_vd7tu")
+sources/1 = SubResource("TileSetAtlasSource_ojau0")
+sources/2 = SubResource("TileSetAtlasSource_y3cw6")
+sources/3 = SubResource("TileSetAtlasSource_m4n2g")
+sources/4 = SubResource("TileSetAtlasSource_6k3q6")
+sources/5 = SubResource("TileSetAtlasSource_j4xcn")
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_uhwo8")
@@ -12,160 +94,6 @@ offset_bottom = 16.0
 theme_override_font_sizes/font_size = 5
 text = "<-back"
 
-[node name="Materials" parent="." instance=ExtResource("3_kcney")]
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="."]
-offset_left = 2.0
-offset_top = 49.0
-offset_right = 42.0
-offset_bottom = 65.0
-
-[node name="Label" type="Label" parent="VBoxContainer3"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="."]
-offset_left = 2.0
-offset_top = 32.0
-offset_right = 42.0
-offset_bottom = 48.0
-
-[node name="Label" type="Label" parent="VBoxContainer4"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer5" type="VBoxContainer" parent="."]
-offset_left = 47.0
-offset_top = 48.0
-offset_right = 87.0
-offset_bottom = 64.0
-
-[node name="Label" type="Label" parent="VBoxContainer5"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer6" type="VBoxContainer" parent="."]
-offset_left = 47.0
-offset_top = 31.0
-offset_right = 87.0
-offset_bottom = 47.0
-
-[node name="Label" type="Label" parent="VBoxContainer6"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer7" type="VBoxContainer" parent="."]
-offset_left = 3.0
-offset_top = 72.0
-offset_right = 16.0
-offset_bottom = 84.0
-
-[node name="Label" type="Label" parent="VBoxContainer7"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer8" type="VBoxContainer" parent="."]
-offset_left = 18.0
-offset_top = 86.0
-offset_right = 31.0
-offset_bottom = 98.0
-
-[node name="Label" type="Label" parent="VBoxContainer8"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer9" type="VBoxContainer" parent="."]
-offset_left = 18.0
-offset_top = 72.0
-offset_right = 31.0
-offset_bottom = 84.0
-
-[node name="Label" type="Label" parent="VBoxContainer9"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer10" type="VBoxContainer" parent="."]
-offset_left = 4.0
-offset_top = 86.0
-offset_right = 17.0
-offset_bottom = 98.0
-
-[node name="Label" type="Label" parent="VBoxContainer10"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer11" type="VBoxContainer" parent="."]
-offset_left = 52.0
-offset_top = 71.0
-offset_right = 65.0
-offset_bottom = 83.0
-
-[node name="Label" type="Label" parent="VBoxContainer11"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer12" type="VBoxContainer" parent="."]
-offset_left = 67.0
-offset_top = 85.0
-offset_right = 80.0
-offset_bottom = 97.0
-
-[node name="Label" type="Label" parent="VBoxContainer12"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer13" type="VBoxContainer" parent="."]
-offset_left = 67.0
-offset_top = 71.0
-offset_right = 80.0
-offset_bottom = 83.0
-
-[node name="Label" type="Label" parent="VBoxContainer13"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer14" type="VBoxContainer" parent="."]
-offset_left = 53.0
-offset_top = 85.0
-offset_right = 66.0
-offset_bottom = 97.0
-
-[node name="Label" type="Label" parent="VBoxContainer14"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="Label" type="Label" parent="."]
-offset_left = 39.0
-offset_top = 78.0
-offset_right = 47.0
-offset_bottom = 88.0
-theme_override_font_sizes/font_size = 5
-text = "for"
-
 [node name="Button2" type="Button" parent="."]
 offset_left = 2.0
 offset_top = 100.0
@@ -173,5 +101,24 @@ offset_right = 84.0
 offset_bottom = 116.0
 theme_override_font_sizes/font_size = 5
 text = "trade"
+
+[node name="Tile Castle" type="TileMapLayer" parent="."]
+texture_filter = 1
+position = Vector2(36, 132)
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray(0, 0, 254, 255, 251, 255, 1, 0, 0, 0, 0, 0, 0, 0, 254, 255, 252, 255, 1, 0, 1, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_87ouy")
+
+[node name="Button" type="Button" parent="Tile Castle"]
+offset_left = -36.0
+offset_top = -150.0
+offset_right = -28.0
+offset_bottom = -142.0
+
+[node name="Button2" type="Button" parent="Tile Castle"]
+offset_left = -40.0
+offset_top = -122.0
+offset_right = -22.0
+offset_bottom = -106.0
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

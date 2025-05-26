@@ -31,13 +31,13 @@ metadata/_edit_use_anchors_ = true
 [node name="Gui" parent="." instance=ExtResource("1_yl25n")]
 
 [node name="Materials" parent="." instance=ExtResource("2_df68q")]
-position = Vector2(9, 2)
+position = Vector2(10, -2)
 
 [node name="Board" parent="." instance=ExtResource("3_brhjt")]
 position = Vector2(0, 2)
 
 [node name="Dice" parent="." instance=ExtResource("4_yhlu8")]
-position = Vector2(13, 55)
+position = Vector2(24, 58)
 
 [node name="Button" type="Button" parent="."]
 offset_right = 16.0

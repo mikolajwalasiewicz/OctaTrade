@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var variables = preload("res://variable.gd").new()
+
 var rand_num = 1
 var rolling = false
 
@@ -12,7 +14,8 @@ func dice():
 	rolling = true
 	randomize()
 	rand_num = int(randf_range(2, 12))
-	print(rand_num)
+	variables.dice_result = rand_num
+	print(variables.dice_result)
 	
 	# After 3 seconds, change the animation based on rand_num
 	await get_tree().create_timer(1.5).timeout

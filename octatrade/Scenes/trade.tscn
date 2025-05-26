@@ -1,160 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfapwjs3xcq3h"]
+[gd_scene load_steps=5 format=4 uid="uid://dfapwjs3xcq3h"]
 
 [ext_resource type="Script" path="res://Scripts/trade.gd" id="1_h4vqn"]
+[ext_resource type="Texture2D" uid="uid://c0khiajgirenx" path="res://Textures/board/map.png" id="2_22s7w"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6vs03"]
+texture = ExtResource("2_22s7w")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 4
+0:0/0 = 0
+0:0/1 = 1
+1:0/next_alternative_id = 2
+1:0/0 = 0
+1:0/3 = 3
+0:1/next_alternative_id = 3
+0:1/0 = 0
+0:1/2 = 2
+1:1/next_alternative_id = 2
+1:1/0 = 0
+1:1/4 = 4
+
+[sub_resource type="TileSet" id="TileSet_03641"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_6vs03")
 
 [node name="Trade" type="Node2D"]
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="."]
-offset_left = 2.0
-offset_top = 49.0
-offset_right = 42.0
-offset_bottom = 65.0
-
-[node name="Label" type="Label" parent="VBoxContainer3"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="."]
-offset_left = 2.0
-offset_top = 32.0
-offset_right = 42.0
-offset_bottom = 48.0
-
-[node name="Label" type="Label" parent="VBoxContainer4"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer5" type="VBoxContainer" parent="."]
-offset_left = 47.0
-offset_top = 48.0
-offset_right = 87.0
-offset_bottom = 64.0
-
-[node name="Label" type="Label" parent="VBoxContainer5"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer6" type="VBoxContainer" parent="."]
-offset_left = 47.0
-offset_top = 31.0
-offset_right = 87.0
-offset_bottom = 47.0
-
-[node name="Label" type="Label" parent="VBoxContainer6"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer7" type="VBoxContainer" parent="."]
-offset_left = 3.0
-offset_top = 72.0
-offset_right = 16.0
-offset_bottom = 84.0
-
-[node name="Label" type="Label" parent="VBoxContainer7"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer8" type="VBoxContainer" parent="."]
-offset_left = 18.0
-offset_top = 86.0
-offset_right = 31.0
-offset_bottom = 98.0
-
-[node name="Label" type="Label" parent="VBoxContainer8"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer9" type="VBoxContainer" parent="."]
-offset_left = 18.0
-offset_top = 72.0
-offset_right = 31.0
-offset_bottom = 84.0
-
-[node name="Label" type="Label" parent="VBoxContainer9"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer10" type="VBoxContainer" parent="."]
-offset_left = 4.0
-offset_top = 86.0
-offset_right = 17.0
-offset_bottom = 98.0
-
-[node name="Label" type="Label" parent="VBoxContainer10"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer11" type="VBoxContainer" parent="."]
-offset_left = 52.0
-offset_top = 71.0
-offset_right = 65.0
-offset_bottom = 83.0
-
-[node name="Label" type="Label" parent="VBoxContainer11"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer12" type="VBoxContainer" parent="."]
-offset_left = 67.0
-offset_top = 85.0
-offset_right = 80.0
-offset_bottom = 97.0
-
-[node name="Label" type="Label" parent="VBoxContainer12"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer13" type="VBoxContainer" parent="."]
-offset_left = 67.0
-offset_top = 71.0
-offset_right = 80.0
-offset_bottom = 83.0
-
-[node name="Label" type="Label" parent="VBoxContainer13"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="VBoxContainer14" type="VBoxContainer" parent="."]
-offset_left = 53.0
-offset_top = 85.0
-offset_right = 66.0
-offset_bottom = 97.0
-
-[node name="Label" type="Label" parent="VBoxContainer14"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-text = "0
-"
-
-[node name="Label" type="Label" parent="."]
-offset_left = 39.0
-offset_top = 78.0
-offset_right = 47.0
-offset_bottom = 88.0
-theme_override_font_sizes/font_size = 5
-text = "for"
 
 [node name="Button" type="Button" parent="."]
 offset_left = 2.0
@@ -170,5 +41,189 @@ offset_bottom = 16.0
 theme_override_font_sizes/font_size = 5
 text = "<-back"
 script = ExtResource("1_h4vqn")
+
+[node name="TilePlayersResources" type="TileMapLayer" parent="."]
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AAAIAAMACAABAAEAAAAJAAIACAABAAEAAAAKAAMACAABAAEAAAAJAAQACAABAAEAAAAIAAQACAABAAEAAAAIAAIACAABAAEAAAANAAAAAQAAAAAAAAANAAEAAQABAAAAAAANAAIAAQAAAAEAAAANAAMAAQABAAEAAAA=")
+tile_set = SubResource("TileSet_03641")
+
+[node name="Label" type="Label" parent="TilePlayersResources"]
+offset_left = 296.0
+offset_top = 12.0
+offset_right = 310.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+
+[node name="Label2" type="Label" parent="TilePlayersResources"]
+offset_left = 296.0
+offset_top = 44.0
+offset_right = 310.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+
+[node name="Label3" type="Label" parent="TilePlayersResources"]
+offset_left = 296.0
+offset_top = 76.0
+offset_right = 310.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+
+[node name="Label4" type="Label" parent="TilePlayersResources"]
+offset_left = 296.0
+offset_top = 108.0
+offset_right = 310.0
+offset_bottom = 143.0
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+
+[node name="TileTradeResources" type="TileMapLayer" parent="."]
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AAAIAAMACAABAAEAAAAJAAIACAABAAEAAAAKAAMACAABAAEAAAAJAAQACAABAAEAAAAIAAQACAABAAEAAAAIAAIACAABAAEAAAABAAUAAQAAAAAAAAABAAYAAQABAAAAAAABAAcAAQAAAAEAAAABAAgAAQABAAEAAAALAAgAAQABAAEAAAALAAcAAQAAAAEAAAALAAYAAQABAAAAAAALAAUAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_03641")
+
+[node name="Label" type="Label" parent="TileTradeResources"]
+offset_left = 60.0
+offset_top = 172.0
+offset_right = 74.0
+offset_bottom = 207.0
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+
+[node name="Label2" type="Label" parent="TileTradeResources"]
+offset_left = 60.0
+offset_top = 204.0
+offset_right = 74.0
+offset_bottom = 239.0
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+
+[node name="Label3" type="Label" parent="TileTradeResources"]
+offset_left = 60.0
+offset_top = 236.0
+offset_right = 74.0
+offset_bottom = 271.0
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+
+[node name="Label4" type="Label" parent="TileTradeResources"]
+offset_left = 60.0
+offset_top = 268.0
+offset_right = 74.0
+offset_bottom = 303.0
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+
+[node name="Label5" type="Label" parent="TileTradeResources"]
+offset_left = 244.0
+offset_top = 176.0
+offset_right = 258.0
+offset_bottom = 211.0
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+
+[node name="Label6" type="Label" parent="TileTradeResources"]
+offset_left = 244.0
+offset_top = 208.0
+offset_right = 258.0
+offset_bottom = 243.0
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+
+[node name="Label7" type="Label" parent="TileTradeResources"]
+offset_left = 244.0
+offset_top = 240.0
+offset_right = 258.0
+offset_bottom = 275.0
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+
+[node name="Label8" type="Label" parent="TileTradeResources"]
+offset_left = 244.0
+offset_top = 272.0
+offset_right = 258.0
+offset_bottom = 307.0
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+
+[node name="Button" type="Button" parent="TileTradeResources"]
+offset_left = 24.0
+offset_top = 176.0
+offset_right = 56.0
+offset_bottom = 208.0
+
+[node name="Button2" type="Button" parent="TileTradeResources"]
+offset_left = 24.0
+offset_top = 208.0
+offset_right = 56.0
+offset_bottom = 240.0
+
+[node name="Button3" type="Button" parent="TileTradeResources"]
+offset_left = 24.0
+offset_top = 240.0
+offset_right = 56.0
+offset_bottom = 272.0
+
+[node name="Button4" type="Button" parent="TileTradeResources"]
+offset_left = 24.0
+offset_top = 272.0
+offset_right = 56.0
+offset_bottom = 304.0
+
+[node name="Button5" type="Button" parent="TileTradeResources"]
+offset_left = 264.0
+offset_top = 176.0
+offset_right = 296.0
+offset_bottom = 208.0
+
+[node name="Button6" type="Button" parent="TileTradeResources"]
+offset_left = 264.0
+offset_top = 208.0
+offset_right = 296.0
+offset_bottom = 240.0
+
+[node name="Button7" type="Button" parent="TileTradeResources"]
+offset_left = 264.0
+offset_top = 240.0
+offset_right = 296.0
+offset_bottom = 272.0
+
+[node name="Button8" type="Button" parent="TileTradeResources"]
+offset_left = 264.0
+offset_top = 272.0
+offset_right = 296.0
+offset_bottom = 304.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 49.0
+offset_right = 50.0
+offset_bottom = 84.0
+theme_override_font_sizes/font_size = 14
+text = "for
+"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 18.0
+offset_right = 50.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 14
+text = "2:1
+"
 
 [connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
