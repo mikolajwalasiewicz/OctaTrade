@@ -187,31 +187,49 @@ func place_castle(cell: Vector2i, player_number: int):
 	print("❌ Brak osady na tej pozycji:", cell)
 
 func can_place_settlement(pos: Vector2i) -> bool:
-	print("Sprawdzam pozycję:", pos)
+	# Najpierw sprawdź, czy pole istnieje w board_data
+	var board_pos_exists = false
+	for tile in variables.board_data:
+		if tile["pos"] == pos:
+			board_pos_exists = true
+			break
+	
+	if not board_pos_exists:
+		print("❌ Nielegalne pole – nie istnieje na planszy:", pos)
+		return false
+
+	# Teraz sprawdzamy, czy nie ma już osady na tym polu
 	for spot in variables.settlement_spots:
-		print("Spot:", spot["pos"], "occupied:", spot.get("occupied", null))
 		if spot["pos"] == pos:
 			if spot.get("occupied", false):
-				print("false (occupied == true)")
+				print("❌ Pole zajęte:", pos)
 				return false
 			else:
-				print("true (occupied == false lub brak)")
+				print("✅ Pole istnieje i wolne:", pos)
 				return true
-	print("true (nie znaleziono spot )")
+
+	print("✅ Pole istnieje, ale nie było jeszcze dodane jako spot:", pos)
 	return true
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		var click_pos = event.position
-		# Zamiana na pozycję na TileMapie (map coordinates)
-		var cell_pos = tilemap_settlements.local_to_map(tilemap_settlements.to_local(click_pos))
-		print("✅ Kliknięto LPM na pozycji (map coords):", cell_pos)
+func get_clicked_cell(event: InputEvent) -> Vector2i:
+		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			var click_pos = event.position
+			var cell_pos = tilemap_settlements.local_to_map(tilemap_settlements.to_local(click_pos))
+			return cell_pos
+		return Vector2i(-1, -1)  # wartość błędna, jeśli nie kliknięto poprawnie
+	
+#func _input(event: InputEvent) -> void:
+#	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+#		var click_pos = event.position
+#		# Zamiana na pozycję na TileMapie (map coordinates)
+#		var cell_pos = tilemap_settlements.local_to_map(tilemap_settlements.to_local(click_pos))
+#		print("✅ Kliknięto LPM na pozycji (map coords):", cell_pos)
 		
 		# Sprawdź, czy można postawić osadę na klikniętej kratce
-		if can_place_settlement(cell_pos):
-			print("✅ Pole wolne, stawiam osadę")
-			place_settlement(cell_pos, 1)  # załóżmy gracz 1
+#		if can_place_settlement(cell_pos):
+#			print("✅ Pole wolne, stawiam osadę")
+#			place_settlement(cell_pos, 1)  # załóżmy gracz 1
 #			place_castle(cell_pos, 1)  # załóżmy gracz 1
-		else:
-			print("❌ Nie można postawić osady na tej pozycji")
+#		else:
+#			print("❌ Nie można postawić osady na tej pozycji")
 			

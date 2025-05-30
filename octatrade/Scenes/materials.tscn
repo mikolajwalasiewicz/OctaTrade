@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=4 uid="uid://c1ycknutgyyaf"]
+[gd_scene load_steps=18 format=4 uid="uid://c1ycknutgyyaf"]
 
 [ext_resource type="Texture2D" uid="uid://c0khiajgirenx" path="res://Textures/board/map.png" id="1_8mxv8"]
+[ext_resource type="Script" path="res://materials.gd" id="1_maq60"]
 [ext_resource type="Texture2D" uid="uid://c2j8o8xvug15a" path="res://Textures/village/player1.png" id="2_hbui1"]
 [ext_resource type="Texture2D" uid="uid://ckcxgcar1inl1" path="res://Textures/village/player2.png" id="3_2hb4n"]
 [ext_resource type="Texture2D" uid="uid://s74hqba8uv2h" path="res://Textures/village/player3.png" id="4_oo57e"]
@@ -108,6 +109,7 @@ sources/4 = SubResource("TileSetAtlasSource_g2srr")
 sources/5 = SubResource("TileSetAtlasSource_gpwx3")
 
 [node name="Materials" type="Node2D"]
+script = ExtResource("1_maq60")
 
 [node name="Tile Color" type="TileMapLayer" parent="."]
 scale = Vector2(0.25, 0.25)

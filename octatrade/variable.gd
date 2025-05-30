@@ -6,30 +6,61 @@ var settlement_spots = []   # Miejsca na osady i zamki, każde: pos, occupied, o
 
 # --- Gracze ---
 var player_count = 2        # Liczba graczy (2-5)
-var players = []            # Lista graczy, np. [{id=1, name="Gracz1", color=Color(...), settlements=..., castles=..., resources={}}, ...]
+var players = [
+	{
+		"id": 1,
+		"name": "Gracz 1",
+		"resource_1": 1,
+		"resource_2": 20,
+		"resource_3": 0,
+		"resource_4": 0,
+		"settlements_left": 5,
+		"castles_left": 4
+	},
+	{
+		"id": 2,
+		"name": "Gracz 2",
+		"resource_1": 0,
+		"resource_2": 0,
+		"resource_3": 0,
+		"resource_4": 0,
+		"settlements_left": 5,
+		"castles_left": 4
+	},
+		{
+		"id": 3,
+		"name": "Gracz 3",
+		"resource_1": 0,
+		"resource_2": 0,
+		"resource_3": 0,
+		"resource_4": 0,
+		"settlements_left": 5,
+		"castles_left": 4
+	},
+		{
+		"id": 4,
+		"name": "Gracz 2",
+		"resource_1": 0,
+		"resource_2": 0,
+		"resource_3": 0,
+		"resource_4": 0,
+		"settlements_left": 5,
+		"castles_left": 4
+	},
+		{
+		"id": 5,
+		"name": "Gracz 2",
+		"resource_1": 0,
+		"resource_2": 0,
+		"resource_3": 0,
+		"resource_4": 0,
+		"settlements_left": 5,
+		"castles_left": 4
+	}
+]
 
 # --- Tura ---
 var current_player = 1      # Kto aktualnie gra (1...player_count)
-var turn_phase = "roll_dice" # Aktualna faza tury np. "roll_dice", "place_settlement", "trade", "build", "end_turn"
 
 # --- Gra ---
 var dice_result = 0         # Wynik rzutu kośćmi w turze
-var robber_position = null  # Pozycja rozbójnika (jeśli jest w grze)
-
-# --- Statystyki i punkty ---
-var player_victory_points = {} # Słownik gracza -> liczba punktów zwycięstwa
-
-func init_players(count):
-	player_count = clamp(count, 2, 5)
-	players.clear()
-	for i in range(player_count):
-		players.append({
-			"id": i + 1,
-			"name": "Gracz %d" % (i + 1),
-			"color": Color(1,1,1),  # zmień na konkretne kolory
-			"settlements": [],
-			"castles": [],
-			"resources": {
-				"wood": 0, "brick": 0, "wheat": 0, "sheep": 0, "ore": 0
-			}
-		})
