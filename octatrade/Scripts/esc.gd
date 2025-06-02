@@ -16,4 +16,5 @@ func _on_button_4_pressed() -> void:
 
 
 func _on_button_3_pressed() -> void:
+	Variable.reset_game()
 	get_parent().set_game()

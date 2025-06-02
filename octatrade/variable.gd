@@ -14,8 +14,8 @@ var players = [
 		"resource_2": 20,
 		"resource_3": 0,
 		"resource_4": 0,
-		"settlements_left": 5,
-		"castles_left": 4
+		"settlements_left": 1,
+		"castles_left": 1
 	},
 	{
 		"id": 2,
@@ -64,3 +64,25 @@ var current_player = 1      # Kto aktualnie gra (1...player_count)
 
 # --- Gra ---
 var dice_result = 0         # Wynik rzutu kośćmi w turze
+var building_mode := "none" # albo "castle"
+
+
+func reset_game():
+	# Reset planszy
+	board_data.clear()
+	settlement_spots.clear()
+
+	# Reset tury i trybu budowania
+	current_player = 1
+	dice_result = 0
+	building_mode = "none"
+
+	# Reset graczy (w zależności od player_count)
+	for i in range(players.size()):
+		var is_active = i < player_count
+		players[i]["resource_1"] = 0
+		players[i]["resource_2"] = 0
+		players[i]["resource_3"] = 0
+		players[i]["resource_4"] = 0
+		players[i]["settlements_left"] = 1
+		players[i]["castles_left"] = 0

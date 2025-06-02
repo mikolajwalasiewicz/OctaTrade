@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var variables = preload("res://variable.gd").new()
+var variables = Variable
 @onready var tilemap_resources = $"Tile Castle"
 @onready var label1 = $Label
 @onready var label2 = $Label2
@@ -27,3 +27,27 @@ func _process(delta: float) -> void:
 	label4.text = str(variables.players[variables.current_player - 1]["resource_4"])
 	label5.text = str(variables.players[variables.current_player - 1]["settlements_left"])
 	label6.text = str(variables.players[variables.current_player - 1]["castles_left"])
+
+
+func stettlement_choice_build() -> void:
+	var left = int(variables.players[variables.current_player - 1]["settlements_left"])
+	if left>0:
+		variables.building_mode = "settlement"
+		print("Wybrano osade")
+	else:
+		print("Brak osad")
+
+
+func castle_choice_build() -> void:
+	var left = int(variables.players[variables.current_player - 1]["castles_left"])
+	if left>0:
+		variables.building_mode = "castle"
+		print("Wybrano zamek")
+	else:
+		print("Brak zamkow")
+
+func next_player() -> void:
+	variables.building_mode = "none"
+
+func show_toast(text: String) -> void:
+	label1.text = text

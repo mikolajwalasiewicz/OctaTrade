@@ -33,5 +33,5 @@ func set_player_count():
 
 func _on_button_3_pressed_start() -> void:
 	set_player_count()
-	print("liczba Graczy: ", variables.player_count)
+	#print("liczba Graczy: ", variables.player_count)
 	get_parent().set_players()

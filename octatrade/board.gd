@@ -3,7 +3,7 @@ extends Node2D
 @onready var tilemap_resources = $"Tile Color"
 @onready var tilemap_numbers = $"Tile Number"
 @onready var tilemap_settlements = $"Tile Castle"
-@onready var variables = preload("res://variable.gd").new()
+var variables = Variable
 
 
 func _ready() -> void:
@@ -76,7 +76,7 @@ func generate_board():
 			change_cell_color(cell, color_id)
 			change_cell_number(cell, number_id)
 			ite = ite+1
-			print("pos = ",cell," color = ",color_id," number = ",number_id," id = ",ite)
+			#print("pos = ",cell," color = ",color_id," number = ",number_id," id = ",ite)
 			
 			# Zapisujemy dane kafelka w zmiennej
 			variables.board_data.append({
@@ -132,9 +132,6 @@ func fill_table_with_spots_to_place_settlements():
 			spot["resource1"] = connected_tiles[0]
 			spot["resource2"] = connected_tiles[1]
 			spot["resource3"] = connected_tiles[2]
-			print("Zaktualizowano spot na", spot["pos"], "->", spot["resource1"], spot["resource2"], spot["resource3"])
-		else:
-			print("❗Nie znaleziono 3 pól dla spot:", spot_pos, "-> znaleziono:", connected_tiles.size())
 
 func place_settlement(cell: Vector2i, player_number: int):
 	for tile in variables.board_data:
@@ -148,22 +145,30 @@ func place_settlement(cell: Vector2i, player_number: int):
 		
 		if tile["pos"] == cell:
 			# Ustawiamy grafikę osady
-			tilemap_settlements.set_cell(cell, player_number-1, Vector2i(0,0))
-			
-			# Zapisujemy dane do settlement_spots
-			variables.settlement_spots.append({
-				"pos": cell,
-				"occupied": true,
-				"can_upgrade": true,
-				"owner": player_number,
-				"resource1": [],       # na razie puste
-				"resource2": [],      # na razie puste
-				"resource3" :[]
-			})
-			
-			print("Dodano nową osadę gracza", player_number, "na pozycji", cell)
-			fill_table_with_spots_to_place_settlements()
-			break
+			if variables.players[player_number - 1]["settlements_left"] <= 0:
+				print("Brak dostępnych osad do postawienia!")
+			else:
+				tilemap_settlements.set_cell(cell, player_number-1, Vector2i(0,0))
+				
+				#odjecie graczowi jednej osady po postawieniu
+				#print(variables.players[variables.current_player - 1]["settlements_left"])
+				variables.players[variables.current_player - 1]["settlements_left"] -= 1
+				#print(variables.players[variables.current_player - 1]["settlements_left"])
+				
+				# Zapisujemy dane do settlement_spots
+				variables.settlement_spots.append({
+					"pos": cell,
+					"occupied": true,
+					"can_upgrade": true,
+					"owner": player_number,
+					"resource1": [],       # na razie puste
+					"resource2": [],      # na razie puste
+					"resource3" :[]
+				})
+				
+				#print("Dodano nową osadę gracza", player_number, "na pozycji", cell)
+				fill_table_with_spots_to_place_settlements()
+				break
 
 func place_castle(cell: Vector2i, player_number: int):
 	for spot in variables.settlement_spots:
@@ -172,44 +177,31 @@ func place_castle(cell: Vector2i, player_number: int):
 				if spot.get("can_upgrade", true):
 					# Zmieniamy grafikę na zamek
 					tilemap_settlements.set_cell(cell, player_number - 1, Vector2i(1, 0))
-					
+					variables.players[variables.current_player - 1]["castles_left"] -= 1
 					# Aktualizujemy dane w spocie
 					spot["can_upgrade"] = false
 					
-					print("🏰 Osada gracza", player_number, "na", cell, "została ulepszona do zamku")
+					#print("🏰 Osada gracza", player_number, "na", cell, "została ulepszona do zamku")
 					return
 				else:
-					print("❌ Osada na", cell, "nie może zostać ulepszona (can_upgrade = false)")
+					#print("❌ Osada na", cell, "nie może zostać ulepszona (can_upgrade = false)")
 					return
 			else:
-				print("❌ To pole nie należy do gracza", player_number, "lub nie ma osady")
+				#print("❌ To pole nie należy do gracza", player_number, "lub nie ma osady")
 				return
-	print("❌ Brak osady na tej pozycji:", cell)
+	#print("❌ Brak osady na tej pozycji:", cell)
 
 func can_place_settlement(pos: Vector2i) -> bool:
-	# Najpierw sprawdź, czy pole istnieje w board_data
-	var board_pos_exists = false
-	for tile in variables.board_data:
-		if tile["pos"] == pos:
-			board_pos_exists = true
-			break
-	
-	if not board_pos_exists:
-		print("❌ Nielegalne pole – nie istnieje na planszy:", pos)
-		return false
-
-	# Teraz sprawdzamy, czy nie ma już osady na tym polu
 	for spot in variables.settlement_spots:
 		if spot["pos"] == pos:
-			if spot.get("occupied", false):
-				print("❌ Pole zajęte:", pos)
-				return false
-			else:
-				print("✅ Pole istnieje i wolne:", pos)
+			# Sprawdź, czy zamek może zostać postawiony (czy jest właścicielem i można ulepszyć)
+			if spot["owner"] == Variable.current_player and spot.get("can_upgrade", false):
 				return true
+			else:
+				return false
+	# Jeśli nie znaleziono osady na tym polu, nie można postawić zamku
+	return false
 
-	print("✅ Pole istnieje, ale nie było jeszcze dodane jako spot:", pos)
-	return true
 
 func get_clicked_cell(event: InputEvent) -> Vector2i:
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -217,19 +209,3 @@ func get_clicked_cell(event: InputEvent) -> Vector2i:
 			var cell_pos = tilemap_settlements.local_to_map(tilemap_settlements.to_local(click_pos))
 			return cell_pos
 		return Vector2i(-1, -1)  # wartość błędna, jeśli nie kliknięto poprawnie
-	
-#func _input(event: InputEvent) -> void:
-#	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-#		var click_pos = event.position
-#		# Zamiana na pozycję na TileMapie (map coordinates)
-#		var cell_pos = tilemap_settlements.local_to_map(tilemap_settlements.to_local(click_pos))
-#		print("✅ Kliknięto LPM na pozycji (map coords):", cell_pos)
-		
-		# Sprawdź, czy można postawić osadę na klikniętej kratce
-#		if can_place_settlement(cell_pos):
-#			print("✅ Pole wolne, stawiam osadę")
-#			place_settlement(cell_pos, 1)  # załóżmy gracz 1
-#			place_castle(cell_pos, 1)  # załóżmy gracz 1
-#		else:
-#			print("❌ Nie można postawić osady na tej pozycji")
-			
