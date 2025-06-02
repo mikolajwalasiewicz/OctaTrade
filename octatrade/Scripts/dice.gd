@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var variables = preload("res://variable.gd").new()
+@onready var button = $Button
 
 var rand_num = 1
 var rolling = false
@@ -14,7 +14,7 @@ func dice():
 	rolling = true
 	randomize()
 	rand_num = int(randf_range(2, 12))
-	variables.dice_result = rand_num
+	Variable.dice_result = rand_num
 	#print(variables.dice_result)
 	
 	# After 3 seconds, change the animation based on rand_num
@@ -57,6 +57,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if rolling:
 		$AnimatedSprite2D.play("roll")
+	if Variable.end_of_time == true:
+		unlock_button()
+		Variable.end_of_time = false
 
 func _on_button_pressed() -> void:
 	dice()
+	lock_button()
+
+func lock_button():
+	button.disabled = true
+
+func unlock_button():
+	button.disabled = false

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjmxoujxo4n72"]
+[gd_scene load_steps=7 format=3 uid="uid://bjmxoujxo4n72"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_nspfj"]
 [ext_resource type="PackedScene" uid="uid://dnqc6wqin3ncj" path="res://Scenes/gui.tscn" id="1_yl25n"]
 [ext_resource type="PackedScene" uid="uid://c1ycknutgyyaf" path="res://Scenes/materials.tscn" id="2_df68q"]
 [ext_resource type="PackedScene" uid="uid://c4bn1qwvsfew8" path="res://Scenes/board.tscn" id="3_brhjt"]
 [ext_resource type="PackedScene" uid="uid://d01j4ajs3iyn" path="res://Scenes/Dice.tscn" id="4_yhlu8"]
+[ext_resource type="PackedScene" uid="uid://sm1ag5qpbwax" path="res://Scenes/timer.tscn" id="6_rd1m2"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(0, -1)
@@ -45,5 +46,7 @@ offset_bottom = 16.0
 theme_override_font_sizes/font_size = 5
 text = "esc"
 metadata/_edit_use_anchors_ = true
+
+[node name="Timer" parent="." instance=ExtResource("6_rd1m2")]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

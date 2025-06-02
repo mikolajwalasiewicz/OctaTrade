@@ -20,6 +20,7 @@ func _on_button_1_pressed() -> void:
 	if value < 5:
 		value += 1
 	$Label2.text = str(value)
+	Variable.player_count = value
 
 
 func _on_button_2_pressed() -> void:
@@ -27,6 +28,7 @@ func _on_button_2_pressed() -> void:
 	if value > 2:
 		value -= 1
 	$Label2.text = str(value)
+	Variable.player_count = value
 
 func set_player_count():
 	variables.player_count = value

@@ -1,7 +1,7 @@
 #shop.gd
 extends Node2D
 
-@onready var variables = preload("res://variable.gd").new()
+var variables = Variable
 @onready var tilemap_resources = $"Tile Castle"
 
 # Called when the node enters the scene tree for the first time.

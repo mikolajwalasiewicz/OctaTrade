@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var variables = preload("res://variable.gd").new()
 @onready var board = $Board
+@onready var dice = $Dice
+@onready var timer = $Timer
 
 func _on_button_pressed() -> void:
 	get_parent().switch_to_esc()
@@ -17,11 +19,14 @@ func start_game():
 	var current_spots = 0
 	
 	for player in range(1, variables.player_count):
+		dice.unlock_button()
+		timer.start_timer()
 		#print("Tura gracza ", player)
-		variables.current_player = player
+		Variable.current_player = player
 		# Tu powinien być ruch gracza, np. stawianie osady
 		give_resources(variables.dice_result)
-		# Zakładamy, że osada zostaje postawiona:
+		
+		#a wez rób tu timer taki ze po 60s current_spots += 1 oki?
 		current_spots += 1
 
 		if current_spots >= max_spots:

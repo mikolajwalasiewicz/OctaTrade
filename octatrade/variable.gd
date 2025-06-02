@@ -24,8 +24,8 @@ var players = [
 		"resource_2": 0,
 		"resource_3": 0,
 		"resource_4": 0,
-		"settlements_left": 5,
-		"castles_left": 4
+		"settlements_left": 1,
+		"castles_left": 1
 	},
 		{
 		"id": 3,
@@ -34,8 +34,8 @@ var players = [
 		"resource_2": 0,
 		"resource_3": 0,
 		"resource_4": 0,
-		"settlements_left": 5,
-		"castles_left": 4
+		"settlements_left": 1,
+		"castles_left": 1
 	},
 		{
 		"id": 4,
@@ -44,8 +44,8 @@ var players = [
 		"resource_2": 0,
 		"resource_3": 0,
 		"resource_4": 0,
-		"settlements_left": 5,
-		"castles_left": 4
+		"settlements_left": 1,
+		"castles_left": 1
 	},
 		{
 		"id": 5,
@@ -54,8 +54,8 @@ var players = [
 		"resource_2": 0,
 		"resource_3": 0,
 		"resource_4": 0,
-		"settlements_left": 5,
-		"castles_left": 4
+		"settlements_left": 1,
+		"castles_left": 1
 	}
 ]
 
@@ -65,7 +65,7 @@ var current_player = 1      # Kto aktualnie gra (1...player_count)
 # --- Gra ---
 var dice_result = 0         # Wynik rzutu kośćmi w turze
 var building_mode := "none" # albo "castle"
-
+var end_of_time = false
 
 func reset_game():
 	# Reset planszy
@@ -85,4 +85,4 @@ func reset_game():
 		players[i]["resource_3"] = 0
 		players[i]["resource_4"] = 0
 		players[i]["settlements_left"] = 1
-		players[i]["castles_left"] = 0
+		players[i]["castles_left"] = 1
