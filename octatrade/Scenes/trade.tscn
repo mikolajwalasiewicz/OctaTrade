@@ -42,6 +42,14 @@ theme_override_font_sizes/font_size = 5
 text = "<-back"
 script = ExtResource("1_h4vqn")
 
+[node name="Button3" type="Button" parent="."]
+offset_left = 2.0
+offset_top = 117.0
+offset_right = 84.0
+offset_bottom = 133.0
+theme_override_font_sizes/font_size = 5
+text = "clear"
+
 [node name="TilePlayersResources" type="TileMapLayer" parent="."]
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AAAIAAMACAABAAEAAAAJAAIACAABAAEAAAAKAAMACAABAAEAAAAJAAQACAABAAEAAAAIAAQACAABAAEAAAAIAAIACAABAAEAAAANAAAAAQAAAAAAAAANAAEAAQABAAAAAAANAAIAAQAAAAEAAAANAAMAAQABAAEAAAA=")
@@ -226,4 +234,14 @@ theme_override_font_sizes/font_size = 14
 text = "2:1
 "
 
+[connection signal="pressed" from="Button" to="Button2" method="trade"]
 [connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
+[connection signal="pressed" from="Button3" to="Button2" method="clear_trade_board"]
+[connection signal="pressed" from="TileTradeResources/Button" to="Button2" method="resource_1_sell"]
+[connection signal="pressed" from="TileTradeResources/Button2" to="Button2" method="resource_2_sell"]
+[connection signal="pressed" from="TileTradeResources/Button3" to="Button2" method="resource_3_sell"]
+[connection signal="pressed" from="TileTradeResources/Button4" to="Button2" method="resource_4_sell"]
+[connection signal="pressed" from="TileTradeResources/Button5" to="Button2" method="resource_1_buy"]
+[connection signal="pressed" from="TileTradeResources/Button6" to="Button2" method="resource_2_buy"]
+[connection signal="pressed" from="TileTradeResources/Button7" to="Button2" method="resource_3_buy"]
+[connection signal="pressed" from="TileTradeResources/Button8" to="Button2" method="resource_4_buy"]

@@ -25,9 +25,8 @@ func start_game():
 		Variable.current_player = player
 		# Tu powinien być ruch gracza, np. stawianie osady
 		give_resources(variables.dice_result)
-		
-		#a wez rób tu timer taki ze po 60s current_spots += 1 oki?
 		current_spots += 1
+		print(current_spots)
 
 		if current_spots >= max_spots:
 			#print("Wszystkie miejsca zajęte, koniec gry!")
@@ -50,3 +49,6 @@ func _input(event: InputEvent) -> void:
 			board.place_castle(cell_pos, Variable.current_player)
 		_:
 			print("Nie wybrano trybu budowy")
+
+func give_resources_player():
+	pass

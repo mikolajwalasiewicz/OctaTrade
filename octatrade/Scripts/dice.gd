@@ -15,6 +15,7 @@ func dice():
 	randomize()
 	rand_num = int(randf_range(2, 12))
 	Variable.dice_result = rand_num
+	Variable.get_resource_from_number()
 	#print(variables.dice_result)
 	
 	# After 3 seconds, change the animation based on rand_num
@@ -60,9 +61,12 @@ func _process(delta: float) -> void:
 	if Variable.end_of_time == true:
 		unlock_button()
 		Variable.end_of_time = false
+		if Variable.rolldice == false:
+			dice()
 
 func _on_button_pressed() -> void:
 	dice()
+	Variable.rolldice = true
 	lock_button()
 
 func lock_button():

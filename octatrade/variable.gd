@@ -10,12 +10,13 @@ var players = [
 	{
 		"id": 1,
 		"name": "Gracz 1",
-		"resource_1": 1,
-		"resource_2": 20,
+		"resource_1": 2,
+		"resource_2": 0,
 		"resource_3": 0,
 		"resource_4": 0,
-		"settlements_left": 1,
-		"castles_left": 1
+		"settlements_left": 5,
+		"castles_left": 5,
+		"points" : 0
 	},
 	{
 		"id": 2,
@@ -24,8 +25,9 @@ var players = [
 		"resource_2": 0,
 		"resource_3": 0,
 		"resource_4": 0,
-		"settlements_left": 1,
-		"castles_left": 1
+		"settlements_left": 5,
+		"castles_left": 5,
+		"points" : 0
 	},
 		{
 		"id": 3,
@@ -35,7 +37,8 @@ var players = [
 		"resource_3": 0,
 		"resource_4": 0,
 		"settlements_left": 1,
-		"castles_left": 1
+		"castles_left": 1,
+		"points" : 0
 	},
 		{
 		"id": 4,
@@ -45,7 +48,8 @@ var players = [
 		"resource_3": 0,
 		"resource_4": 0,
 		"settlements_left": 1,
-		"castles_left": 1
+		"castles_left": 1,
+		"points" : 0
 	},
 		{
 		"id": 5,
@@ -55,7 +59,8 @@ var players = [
 		"resource_3": 0,
 		"resource_4": 0,
 		"settlements_left": 1,
-		"castles_left": 1
+		"castles_left": 1,
+		"points" : 0
 	}
 ]
 
@@ -66,6 +71,9 @@ var current_player = 1      # Kto aktualnie gra (1...player_count)
 var dice_result = 0         # Wynik rzutu kośćmi w turze
 var building_mode := "none" # albo "castle"
 var end_of_time = false
+var rolldice = false
+var trade_ratio = 2		#1:x
+var trade_ratio_to = 1		#x:2
 
 func reset_game():
 	# Reset planszy
@@ -86,3 +94,39 @@ func reset_game():
 		players[i]["resource_4"] = 0
 		players[i]["settlements_left"] = 1
 		players[i]["castles_left"] = 1
+
+func get_resource_from_number():
+	if dice_result == 0:
+		return # Nie rzucano jeszcze kośćmi
+
+	for spot in settlement_spots:
+		# Pobierz zasoby tylko jeśli pole jest zajęte
+		if spot.get("occupied", false) == false:
+			continue
+
+		var player_id = spot.get("owner", -1)
+		if player_id == -1:
+			continue
+
+		# Ile surowców ma otrzymać? (1 za osadę, 2 za zamek)
+		var resource_multiplier = 1
+		if spot.get("can_upgrade", true) == false:
+			resource_multiplier = 2
+
+		# Sprawdź czy któryś z przypisanych pól ma numer odpowiadający wynikowi rzutu
+		for res_key in ["resource1", "resource2", "resource3","resource4"]:
+			if spot.has(res_key):
+				var res = spot[res_key]
+				if typeof(res) == TYPE_DICTIONARY and res.has("number_id") and res["number_id"] == dice_result:
+					var resource_type = res.get("color_id", -1)
+					
+					if resource_type == -1:
+						continue
+					
+					# Nazwa pola zasobu w strukturze gracza
+					var resource_field = "resource_%d" % resource_type
+					
+					if player_id > 0 and player_id <= player_count:
+						# Zwiększ zasób gracza
+						players[player_id - 1][resource_field] += resource_multiplier
+						print("🎲 Gracz", player_id, "otrzymuje", resource_multiplier, "x", resource_field)
