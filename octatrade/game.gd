@@ -11,6 +11,23 @@ func _on_button_pressed() -> void:
 func _ready() -> void:
 	start_game()
 
+
+func _process(delta: float) -> void:
+	check_for_end_game()
+
+func chgange_scene():
+	get_parent().switch_to_end()
+	pass
+
+func check_for_end_game():
+	var max_spots = 27
+	var current_spots = 0
+	for spot in Variable.settlement_spots:
+		current_spots += 1
+	if current_spots >= max_spots:
+		chgange_scene()
+		print("koniec gry")
+
 func show_player_turn(turn: int):
 	print("Tura gracza ", turn)
 

@@ -116,17 +116,23 @@ func fill_table_with_spots_to_place_settlements():
 		var x = spot_pos.x
 		var y = spot_pos.y
 		
-		var connected_tiles = []
-		
-		# Te zależności ustalasz na podstawie układu pól wokół narożnika (hardcoded pattern)
-		var neighbor_positions = [
-			Vector2i(x - 1, y),
-			Vector2i(x, y),
-			Vector2i(x - 1, y + 1)
-		]
+		var neighbor_positions = []
 
-		# Jeśli spot jest na parzystym x, może trzeba zmienić układ – zależnie od planszy
-		# dodaj obsługę if (x % 2 == 0) { inne neighbor_positions } jeśli potrzebujesz
+		# W zależności od parzystości kolumny
+		if x % 2 == 0:
+			neighbor_positions = [
+				Vector2i(x - 1, y - 1),
+				Vector2i(x - 1, y),
+				Vector2i(x, y)
+			]
+		else:
+			neighbor_positions = [
+				Vector2i(x - 1, y),
+				Vector2i(x - 1, y + 1),
+				Vector2i(x, y)
+			]
+
+		var connected_tiles = []
 
 		for bd in variables.board_data:
 			if bd.has("pos") and bd["pos"] in neighbor_positions:
@@ -135,12 +141,17 @@ func fill_table_with_spots_to_place_settlements():
 					"color_id": bd.get("color_id", -1),
 					"number_id": bd.get("number_id", -1)
 				})
-				
-		# Ustaw zasoby jeśli są 3
+		
+		# Jeśli są 3 zasoby, przypisz
 		if connected_tiles.size() == 3:
 			spot["resource1"] = connected_tiles[0]
 			spot["resource2"] = connected_tiles[1]
 			spot["resource3"] = connected_tiles[2]
+		else:
+			# Wyczyść jeśli niekompletne
+			spot["resource1"] = connected_tiles[0]
+			spot["resource2"] = connected_tiles[1]
+			spot["resource3"] = {}
 
 func place_settlement(cell: Vector2i, player_number: int):
 	for tile in variables.board_data:
@@ -178,6 +189,10 @@ func place_settlement(cell: Vector2i, player_number: int):
 				#print("Dodano nową osadę gracza", player_number, "na pozycji", cell)
 				fill_table_with_spots_to_place_settlements()
 				debug_print_settlement_spots()
+				
+								# Dodaj punkt za postawienie osady
+				variables.players[player_number - 1]["points"] += 1
+				print("Gracz", player_number, "zdobywa 1 punkt. Aktualnie:", variables.players[player_number - 1]["points"])
 				break
 
 func place_castle(cell: Vector2i, player_number: int):
@@ -190,6 +205,10 @@ func place_castle(cell: Vector2i, player_number: int):
 					variables.players[variables.current_player - 1]["castles_left"] -= 1
 					# Aktualizujemy dane w spocie
 					spot["can_upgrade"] = false
+					
+					# Dodaj punkt za zamek
+					variables.players[player_number - 1]["points"] += 1
+					print("Gracz", player_number, "zdobywa 1 punkt za zamek. Aktualnie:", variables.players[player_number - 1]["points"])
 					
 					#print("🏰 Osada gracza", player_number, "na", cell, "została ulepszona do zamku")
 					return

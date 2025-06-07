@@ -5,6 +5,7 @@ var scene1 = preload("res://Scenes/scene1.tscn")
 var game_scene = preload("res://Scenes/game.tscn")
 var shop_scene = preload("res://Scenes/shop.tscn")
 var trade_scene = preload("res://Scenes/trade.tscn")
+var end_scene = preload("res://Scenes/endgame.tscn")
 
 var awaiting_game_scene: Node = null
 var current_scene: Node = null
@@ -58,6 +59,14 @@ func set_game():
 	current_scene = scene1.instantiate()
 	add_child(current_scene)
 	awaiting_game_scene = null
+
+func switch_to_end():
+	if current_scene:
+		if current_scene != awaiting_game_scene:
+			awaiting_game_scene = current_scene
+		remove_child(current_scene)  # zamiast queue_free()
+	current_scene = end_scene.instantiate()
+	add_child(current_scene)
 
 func generate_board():
 	pass

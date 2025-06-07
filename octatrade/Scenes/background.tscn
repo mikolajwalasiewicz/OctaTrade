@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3ie54xcj6uyd"]
+
+[ext_resource type="Script" path="res://Scripts/background.gd" id="1_jckra"]
+[ext_resource type="Texture2D" uid="uid://bjceev6lfdg4p" path="res://Textures/background/parallax-00.png" id="1_me2o3"]
+[ext_resource type="Texture2D" uid="uid://dhcper6tslwr" path="res://Textures/background/parallax-01.png" id="2_hbs7c"]
+[ext_resource type="Texture2D" uid="uid://r6h57eqgnjaq" path="res://Textures/background/parallax-02.png" id="3_qbhhf"]
+[ext_resource type="Texture2D" uid="uid://c13odkom417xh" path="res://Textures/background/parallax-03.png" id="4_juyyt"]
+
+[node name="Background" type="Node2D"]
+script = ExtResource("1_jckra")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-16, 0)
+motion_mirroring = Vector2(720, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, 80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_me2o3")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-16, 0)
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(720, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(0, 48)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_hbs7c")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-16, 0)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(720, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(0, 80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_qbhhf")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-16, 48)
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(720, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(0, 32)
+scale = Vector2(0.5, 0.495)
+texture = ExtResource("4_juyyt")
