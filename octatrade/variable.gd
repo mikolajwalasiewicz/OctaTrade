@@ -10,12 +10,12 @@ var players = [
 	{
 		"id": 1,
 		"name": "Gracz 1",
-		"resource_1": 2,
-		"resource_2": 0,
-		"resource_3": 0,
-		"resource_4": 0,
-		"settlements_left": 5,
-		"castles_left": 5,
+		"resource_1": 100,
+		"resource_2": 100,
+		"resource_3": 100,
+		"resource_4": 100,
+		"settlements_left": 100,
+		"castles_left": 100,
 		"points" : 0
 	},
 	{

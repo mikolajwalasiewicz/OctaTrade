@@ -34,6 +34,15 @@ func _ready() -> void:
 	can_place_settlement(Vector2i(2, 1))
 	can_place_settlement(Vector2i(1, 2))
 
+func debug_print_settlement_spots():
+	print("===== SETTLEMENT SPOTS DEBUG =====")
+	for i in range(variables.settlement_spots.size()):
+		var spot = variables.settlement_spots[i]
+		print("Spot", i, "=>")
+		for key in spot.keys():
+			print("  ", key, ":", spot[key])
+	print("===================================")
+
 func generate_board():
 	var width = 7
 	var height = 6
@@ -168,6 +177,7 @@ func place_settlement(cell: Vector2i, player_number: int):
 				
 				#print("Dodano nową osadę gracza", player_number, "na pozycji", cell)
 				fill_table_with_spots_to_place_settlements()
+				debug_print_settlement_spots()
 				break
 
 func place_castle(cell: Vector2i, player_number: int):

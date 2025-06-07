@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dodqhv7odif6o"]
+[gd_scene load_steps=18 format=4 uid="uid://dodqhv7odif6o"]
 
 [ext_resource type="Script" path="res://shop.gd" id="1_uhwo8"]
 [ext_resource type="Texture2D" uid="uid://c2j8o8xvug15a" path="res://Textures/village/player1.png" id="2_8i2qb"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bt5025oe3m30w" path="res://Textures/village/player4.png" id="5_3q4eo"]
 [ext_resource type="Texture2D" uid="uid://10vaecdshows" path="res://Textures/village/player5.png" id="6_qita1"]
 [ext_resource type="Texture2D" uid="uid://ck8lh8b1dgbna" path="res://Textures/village/place.png" id="7_vqyv0"]
+[ext_resource type="Texture2D" uid="uid://c0khiajgirenx" path="res://Textures/board/map.png" id="8_74b8j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vd7tu"]
 texture = ExtResource("2_8i2qb")
@@ -85,6 +86,28 @@ sources/3 = SubResource("TileSetAtlasSource_m4n2g")
 sources/4 = SubResource("TileSetAtlasSource_6k3q6")
 sources/5 = SubResource("TileSetAtlasSource_j4xcn")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ro03g"]
+texture = ExtResource("8_74b8j")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 4
+0:0/0 = 0
+0:0/1 = 1
+1:0/next_alternative_id = 2
+1:0/0 = 0
+1:0/3 = 3
+0:1/next_alternative_id = 3
+0:1/0 = 0
+0:1/2 = 2
+1:1/next_alternative_id = 2
+1:1/0 = 0
+1:1/4 = 4
+
+[sub_resource type="TileSet" id="TileSet_esvb6"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_ro03g")
+
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_uhwo8")
 
@@ -94,19 +117,11 @@ offset_bottom = 16.0
 theme_override_font_sizes/font_size = 5
 text = "<-back"
 
-[node name="Button2" type="Button" parent="."]
-offset_left = 2.0
-offset_top = 100.0
-offset_right = 84.0
-offset_bottom = 116.0
-theme_override_font_sizes/font_size = 5
-text = "trade"
-
 [node name="Tile Castle" type="TileMapLayer" parent="."]
 texture_filter = 1
 position = Vector2(36, 132)
 scale = Vector2(0.5, 0.5)
-tile_map_data = PackedByteArray(0, 0, 254, 255, 251, 255, 1, 0, 0, 0, 0, 0, 0, 0, 254, 255, 252, 255, 1, 0, 1, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray("AAD+//v/AQAAAAAAAAD+//z/AQABAAAAAAA=")
 tile_set = SubResource("TileSet_87ouy")
 
 [node name="Button" type="Button" parent="Tile Castle"]
@@ -121,4 +136,145 @@ offset_top = -122.0
 offset_right = -22.0
 offset_bottom = -106.0
 
+[node name="TilePlayersResources" type="TileMapLayer" parent="."]
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AAAIAAMACAABAAEAAAAJAAIACAABAAEAAAAKAAMACAABAAEAAAAJAAQACAABAAEAAAAIAAQACAABAAEAAAAIAAIACAABAAEAAAANAAAAAQAAAAAAAAANAAEAAQABAAAAAAANAAIAAQAAAAEAAAANAAMAAQABAAEAAAA=")
+tile_set = SubResource("TileSet_esvb6")
+
+[node name="Label" type="Label" parent="TilePlayersResources"]
+offset_left = 296.0
+offset_top = 12.0
+offset_right = 310.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="TilePlayersResources"]
+offset_left = 296.0
+offset_top = 44.0
+offset_right = 310.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="TilePlayersResources"]
+offset_left = 296.0
+offset_top = 76.0
+offset_right = 310.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="TilePlayersResources"]
+offset_left = 296.0
+offset_top = 108.0
+offset_right = 310.0
+offset_bottom = 143.0
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="TilePlayersResources2" type="TileMapLayer" parent="."]
+position = Vector2(-48, 51)
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AAAIAAMACAABAAEAAAAJAAIACAABAAEAAAAKAAMACAABAAEAAAAJAAQACAABAAEAAAAIAAQACAABAAEAAAAIAAIACAABAAEAAAANAAAAAQAAAAAAAAAPAAAAAQABAAAAAAARAAAAAQAAAAEAAAATAAAAAQABAAEAAAA=")
+tile_set = SubResource("TileSet_esvb6")
+
+[node name="Label" type="Label" parent="TilePlayersResources2"]
+offset_left = 296.0
+offset_top = 12.0
+offset_right = 310.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 25
+text = "2
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="TilePlayersResources2"]
+offset_left = 348.0
+offset_top = 12.0
+offset_right = 362.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 25
+text = "1
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="TilePlayersResources2"]
+offset_left = 396.0
+offset_top = 12.0
+offset_right = 410.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 25
+text = "2
+
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="TilePlayersResources2"]
+offset_left = 444.0
+offset_top = 12.0
+offset_right = 458.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 25
+text = "1
+
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="TilePlayersResources3" type="TileMapLayer" parent="."]
+position = Vector2(-48, 67)
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AAAIAAMACAABAAEAAAAJAAIACAABAAEAAAAKAAMACAABAAEAAAAJAAQACAABAAEAAAAIAAQACAABAAEAAAAIAAIACAABAAEAAAANAAAAAQAAAAAAAAAPAAAAAQABAAAAAAARAAAAAQAAAAEAAAATAAAAAQABAAEAAAA=")
+tile_set = SubResource("TileSet_esvb6")
+
+[node name="Label" type="Label" parent="TilePlayersResources3"]
+offset_left = 296.0
+offset_top = 12.0
+offset_right = 310.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 25
+text = "2
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="TilePlayersResources3"]
+offset_left = 348.0
+offset_top = 12.0
+offset_right = 362.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 25
+text = "4
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="TilePlayersResources3"]
+offset_left = 396.0
+offset_top = 12.0
+offset_right = 410.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 25
+text = "2
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="TilePlayersResources3"]
+offset_left = 444.0
+offset_top = 12.0
+offset_right = 458.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 25
+text = "4
+"
+metadata/_edit_use_anchors_ = true
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Tile Castle/Button" to="." method="settlement_add"]
+[connection signal="pressed" from="Tile Castle/Button2" to="." method="castle_add"]

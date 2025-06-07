@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func start_timer():
 	button.visible = false
-	time_left = 15.0
+	time_left = 9999999.0
 	label.text = String("%.2f" % time_left)
 	timer.start()
 
