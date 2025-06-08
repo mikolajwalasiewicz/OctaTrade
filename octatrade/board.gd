@@ -33,6 +33,10 @@ func _ready() -> void:
 	can_place_settlement(Vector2i(1, 1))
 	can_place_settlement(Vector2i(2, 1))
 	can_place_settlement(Vector2i(1, 2))
+	
+	randomize()
+	for i in range(Variable.player_count):
+		place_random_settlement_for_player(i +1)
 
 func debug_print_settlement_spots():
 	print("===== SETTLEMENT SPOTS DEBUG =====")
@@ -172,7 +176,7 @@ func place_settlement(cell: Vector2i, player_number: int):
 				
 				#odjecie graczowi jednej osady po postawieniu
 				#print(variables.players[variables.current_player - 1]["settlements_left"])
-				variables.players[variables.current_player - 1]["settlements_left"] -= 1
+				variables.players[player_number - 1]["settlements_left"] -= 1
 				#print(variables.players[variables.current_player - 1]["settlements_left"])
 				
 				# Zapisujemy dane do settlement_spots
@@ -238,3 +242,30 @@ func get_clicked_cell(event: InputEvent) -> Vector2i:
 			var cell_pos = tilemap_settlements.local_to_map(tilemap_settlements.to_local(click_pos))
 			return cell_pos
 		return Vector2i(-1, -1)  # wartość błędna, jeśli nie kliknięto poprawnie
+
+func place_random_settlement_for_player(player_number: int) -> void:
+	var possible_positions = [
+		Vector2i(1, 1), Vector2i(1, 2), Vector2i(1, 3), Vector2i(1, 4),
+		Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 3), Vector2i(2, 4), Vector2i(2, 5),
+		Vector2i(3, 1), Vector2i(3, 2), Vector2i(3, 3), Vector2i(3, 4),
+		Vector2i(4, 1), Vector2i(4, 2), Vector2i(4, 3), Vector2i(4, 4), Vector2i(4, 5),
+		Vector2i(5, 1), Vector2i(5, 2), Vector2i(5, 3), Vector2i(5, 4),
+		Vector2i(6, 1), Vector2i(6, 2), Vector2i(6, 3), Vector2i(6, 4)
+	]
+
+	var random_index = randi() % possible_positions.size()
+	var random_pos = possible_positions[random_index]
+	
+		# Szukamy settlement_spota na tej pozycji
+	for spot in variables.settlement_spots:
+		if spot.pos == random_pos:
+			if spot.occupied:
+				print("Pozycja zajęta: ", random_pos, " – próbuję jeszcze raz.")
+				place_random_settlement_for_player(player_number) # REKURENCJA
+				return
+			else:
+				place_settlement(random_pos, player_number)
+				return
+
+	print("Nie znaleziono spota na pozycji: ", random_pos)
+	place_settlement(random_pos, player_number)

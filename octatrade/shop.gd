@@ -45,7 +45,7 @@ func settlement_add() -> void:
 		player[res] -= cost[res]
 
 	# Zmniejsz ilość dostępnych osad
-	if player["settlements_left"] > 0:
+	if player["settlements_left"] >= 0:
 		player["settlements_left"] += 1
 		print("✅ Osada postawiona!")
 	else:

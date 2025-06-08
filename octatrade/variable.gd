@@ -10,54 +10,54 @@ var players = [
 	{
 		"id": 1,
 		"name": "Gracz 1",
-		"resource_1": 100,
-		"resource_2": 100,
-		"resource_3": 100,
-		"resource_4": 100,
-		"settlements_left": 100,
-		"castles_left": 100,
+		"resource_1": 2,
+		"resource_2": 1,
+		"resource_3": 2,
+		"resource_4": 1,
+		"settlements_left": 1,
+		"castles_left": 1,
 		"points" : 0
 	},
 	{
 		"id": 2,
 		"name": "Gracz 2",
-		"resource_1": 0,
-		"resource_2": 0,
-		"resource_3": 0,
-		"resource_4": 0,
-		"settlements_left": 5,
-		"castles_left": 5,
+		"resource_1": 2,
+		"resource_2": 1,
+		"resource_3": 2,
+		"resource_4": 1,
+		"settlements_left": 1,
+		"castles_left": 1,
 		"points" : 0
 	},
 		{
 		"id": 3,
 		"name": "Gracz 3",
-		"resource_1": 0,
-		"resource_2": 0,
-		"resource_3": 0,
-		"resource_4": 0,
+		"resource_1": 1,
+		"resource_2": 2,
+		"resource_3": 1,
+		"resource_4": 2,
 		"settlements_left": 1,
 		"castles_left": 1,
 		"points" : 0
 	},
 		{
 		"id": 4,
-		"name": "Gracz 2",
-		"resource_1": 0,
-		"resource_2": 0,
-		"resource_3": 0,
-		"resource_4": 0,
+		"name": "Gracz 4",
+		"resource_1": 2,
+		"resource_2": 1,
+		"resource_3": 2,
+		"resource_4": 1,
 		"settlements_left": 1,
 		"castles_left": 1,
 		"points" : 0
 	},
 		{
 		"id": 5,
-		"name": "Gracz 2",
-		"resource_1": 0,
-		"resource_2": 0,
-		"resource_3": 0,
-		"resource_4": 0,
+		"name": "Gracz 5",
+		"resource_1": 1,
+		"resource_2": 2,
+		"resource_3": 1,
+		"resource_4": 2,
 		"settlements_left": 1,
 		"castles_left": 1,
 		"points" : 0
@@ -88,10 +88,10 @@ func reset_game():
 	# Reset graczy (w zależności od player_count)
 	for i in range(players.size()):
 		var is_active = i < player_count
-		players[i]["resource_1"] = 0
-		players[i]["resource_2"] = 0
-		players[i]["resource_3"] = 0
-		players[i]["resource_4"] = 0
+		players[i]["resource_1"] = 2
+		players[i]["resource_2"] = 1
+		players[i]["resource_3"] = 2
+		players[i]["resource_4"] = 1
 		players[i]["settlements_left"] = 1
 		players[i]["castles_left"] = 1
 
